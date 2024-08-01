@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/********** ACCUEIL **********/
+/***** ENTETE *****/
+#bodyAccueil {
+  background-image: url(/images/profondeurs.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: aqua;
+}
+
+#entete {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#entete div:first-child {
+  width: 500px;
+}
+
+#entete #h1 {
+  font-size: 80px;
+}
+
+#entete div:nth-child(2) {
+  width: 100px;
+  text-align: center;
+}
+
+#entete img {
+  width: 50px;
+}
+
+#entete ~ div {
+  margin-top: 2em;
+  padding: 0.5em;
+  text-align: center;
+  background-color: bisque;
+  color: blue;
+  font-size: 30px;
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: bolder;
+  font-style: normal;
+  line-height: 25px;
+}
+
+/***** CHOIX *****/
+#choix {
+  margin-bottom: 10em;
+}
+
+#choix h2 {
+  margin: 2em 0 2em 0;
+  font-size: 40px;
+  text-align: center;
+}
+
+#containerAccueil .col-4 {
+  width: 200px;
+  height: 200px;
+}
+
+#containerAccueil .col-4 div {
+  width: 200px;
+  height: 200px;
+  background-size: contain;
+  background-position: center;
+}
+
+#containerAccueil legend {
+  color: yellow;
+  font-weight: bolder;
+}
+
+/***** FOOTER *****/
+footer {
+  background-color: bisque;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-around;
+  padding: 3em;
+}
+
+footer li {
+  list-style: none;
+  color: blue;
+}
+
+/********** CONSULTER **********/
+#consulter {
+  margin: 2em;
+  background-image: url(/images/plage.jpg);
+  background-repeat: no-repeat;
+  background-clip: content-box;
+}
+
+#boutonAccueil {
+  float: right;
+  margin-top: 1em;
+  margin-right: 5em;
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  background-image: url(/images/profondeurs.jpg);
+}
+
+#boutonAccueil a {
+  color: aqua;
+  font-size: 20px;
+}
+
+#signe {
+  display: flex;
+  justify-content: center;
+  margin: 5em;
+  gap: 5em;
+}
+
+#consulter h2,
+#consulter h3,
+#consulter h4 {
+  margin: 1em;
+  text-transform: uppercase;
+}
+
+#consulter h2 {
+  color: blue;
+  font-size: 50px;
+  text-align: center;
+  align-self: center;
+}
+
+#consulter h3 {
+  font-size: 40px;
+  text-align: left;
+}
+
+/********** FORMULAIRE CONNEXION/INSCRIPTION **********/
+#containerForm {
+  border-radius: 5px;
+  background-image: url(/images/corail.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#containerForm div:nth-child(2){
+  width: 450px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  border: 3px solid bisque;
+  border-radius: 5px;
+}
+
+#containerForm h2 {
+  color: blue;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form button[type="submit"] {
+  width: 90%;
+  margin-bottom: 30px;
+  padding: 16px;
+  color: blue;
+  border: 5px solid bisque;
+  border-radius: 5px;
+}
+
+form input[type="text"]:focus,
+form input[type="text"]:hover,
+form input[type="email"]:focus,
+form input[type="email"]:hover,
+form input[type="password"]:focus,
+form input[type="password"]:hover {
+  background-color: bisque;
+}
+
+form button[type="submit"] {
+  font-weight: bold;
+  color: blue;
+  text-transform: uppercase;
+  background-color: aqua;
+}
+
+form button[type="submit"]:focus,
+form button[type="submit"]:hover {
+  background-color: blue;
+  color: aqua;
+  border-color: aqua;
+}
+
+#containerForm #sinscrire a {
+  color:bisque;
+  text-shadow: 1px 1px 1px blue;
+}
+
+#containerForm p{
+  float: right;
+}
+
+/**********  DASHBOARD **********/
+/***** ACCUEIL *****/
+#gestion #choix {
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  align-items: center;
+}
+
+#gestion #choix li {
+  width: 200px;
+  background-color: aqua;
+  border-radius: 10px;
+  list-style: none;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+#gestion #choix li a {
+  text-decoration: none;
+}
+
+#menuAstromarin,
+#menuAstromarin ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#menuAstromarin li {
+  position: relative;
+  background-image: -webkit-linear-gradient(top, #cfff6a 0%, #677f35 100%);
+  background-image: linear-gradient(to bottom, #cfff6a 0%, #677f35 100%);
+}
+
+#menuAstromarin ul {
+  position: absolute;
+  max-height: 0;
+  overflow: hidden;
+  -moz-transition: 0.8s all 0.3s;
+  -webkit-transition: 0.8s all 0.3s;
+  transition: 0.8s all 0.3s;
+}
+
+#menuAstromarin li:hover ul {
+  max-height: 15em;
+}
+
+#menuAstromarin a {
+  text-decoration: none;
+}
+
+#menuAstromarin li:hover li a {
+  color: #fff;
+  text-transform: inherit;
+}
+
+#menuAstromarin li:hover a,
+#menuAstromarin li li:hover a {
+  color: blue;
+}
