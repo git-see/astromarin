@@ -1,8 +1,12 @@
 <?php
 session_start();
+
+require_once ('librairies/database/database.php');
+require_once ('librairies/patron.php');
+
 if (isset($_GET['id']) && !empty($_GET['id'])) {
 
-    require_once('database/connexionBDD.php');
+    $db = getPdo();
 
     $aujourdhui = new DateTime();
     $aujourdhuiFR = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::NONE);
@@ -20,18 +24,14 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $query->execute();
     $result = $query->fetch();
 
-    require_once('database/deconnexionBDD.php');
+    require_once('librairies/database/deconnexionBDD.php');
 } else {
     echo 'Une erreur est survenue';
-    header('Location: /index.php');
-    exit();
+    redirect('index.php', '');
 }
 ?>
 
 <?php
 $pageTitle = "CONSULTER";
-ob_start();
-require('templates/consulterContent.php');
-$pageContent = ob_get_clean();
-require('templates/layout.php');
+render('', 'consulterContent', compact('pageTitle', 'aujourdhuiFR', 'aujourdhui', 'result'));
 ?>
