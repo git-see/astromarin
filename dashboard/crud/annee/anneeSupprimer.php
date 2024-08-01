@@ -7,7 +7,7 @@ if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
 // GÉRER LA SUPPRESSION DE L'ANNÉE
 if (isset($_GET['id']) && !empty($_GET['id'])) {
-    require_once('..////..///../database/connexionBDD.php');
+    require_once('../../../database/connexionBDD.php');
 
     $id = strip_tags($_GET['id']);
 
