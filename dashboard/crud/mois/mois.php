@@ -1,10 +1,17 @@
 <?php
 session_start();
+
+require_once ('../../../librairies/database/database.php');
+require_once ('../../../librairies/patron.php');
+
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
-    header("Location: /formulaire/formConnexion.php");
-    die();
+
+    redirect('../../../../formulaires/formConnexion.php', '');
+
 } else {
-    require_once('../../../database/connexionBDD.php');
+
+    $db = getPdo();
+
     $sql = 'SELECT * FROM signes, mois WHERE signes.id = mois.signes_id LIMIT 12';
     $query = $db->prepare($sql);
     $query->execute();
@@ -14,8 +21,5 @@ if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 <link rel="stylesheet" href="/style.css">
 <?php
 $pageTitle = "- GESTION MOIS";
-ob_start();
-require('../../../templates/mois/mois.php');
-$pageContent = ob_get_clean();
-require('../../../templates/layout.php');
+render('../../../', 'mois/mois', compact('pageTitle', 'result'));
 ?>

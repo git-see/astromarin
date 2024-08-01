@@ -1,8 +1,13 @@
 <?php
 session_start();
+
+require_once ('../../../librairies/database/database.php');
+require_once ('../../../librairies/patron.php');
+
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
-    header("Location: /formulaire/formConnexion.php");
-    die();
+
+    redirect('../../../../formulaires/formConnexion.php', '');
+
 }
 
 if ($_POST) {
@@ -14,7 +19,7 @@ if ($_POST) {
         && isset($_POST['textSanteAnnee']) && !empty($_POST['textSanteAnnee'])
     ) {
 
-        require_once('../../../database/connexionBDD.php');
+        $db = getPdo();
 
         $id = strip_tags($_POST['id']);
         $dateAnnee = strip_tags($_POST['dateAnnee']);
@@ -44,7 +49,8 @@ if ($_POST) {
 
 // RÉCUPÉRER ET AFFICHER
 if (isset($_GET['id']) && !empty($_GET['id'])) {
-    require_once('../../../database/connexionBDD.php');
+
+    $db = getPdo();
 
     $id = strip_tags($_GET['id']);
     $sql = 'SELECT * FROM annee WHERE id = :id;';
@@ -74,8 +80,5 @@ if (
 <link rel="stylesheet" href="/style.css">
 <?php
 $pageTitle = "- MODIFIER UNE PRÉDICTION";
-ob_start();
-require('../../../templates/annee/modifier.php');
-$pageContent = ob_get_clean();
-require('../../../templates/layout.php');
+render('../../../', 'annee/modifier', compact('pageTitle', 'sign', 'modifie', 'result'));
 ?>

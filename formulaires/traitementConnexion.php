@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+require_once ('../librairies/database/database.php');
+require_once ('../librairies/patron.php');
+
 if (isset($_POST['btnConnexion'])) {
 
     if (isset($_POST) && !empty($_POST)) {
@@ -8,7 +12,7 @@ if (isset($_POST['btnConnexion'])) {
             && !empty($_POST["email"] && !empty($_POST["pass"]))
         ) {
 
-            require_once "../database/connexionBDD.php";
+            $db = getPdo();
 
             $connexionCompte = $db->prepare("SELECT * FROM `users` WHERE `email`= :email");
             $connexionCompte->bindValue(':email', $_POST['email']);
@@ -51,13 +55,12 @@ if (isset($_POST['btnConnexion'])) {
         } else if (isset($_SESSION['user']) && $user["statut"] == "Admin") {
             header("Location: /dashboard/accueil.php");
         } else {
-            header("Location: formConnexion.php");
-            die('Vous devez remplir tous les champs');
+
+            redirect('formConnexion.php', 'Vous devez remplir tous les champs');
         }
     }
 
     // Bouton non utilisé  
 } else {
-    header("Location: formConnexion.php");
-    die();
+    redirect('formConnexion.php', '');
 }

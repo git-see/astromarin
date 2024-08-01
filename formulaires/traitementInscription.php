@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+require_once ('../../../librairies/database/database.php');
+require_once ('../librairies/patron.php');
+
 if (isset($_POST) && !empty($_POST)) {
     if (
         isset($_POST["pseudo"]) && !empty($_POST["pseudo"])
@@ -16,7 +19,7 @@ if (isset($_POST) && !empty($_POST)) {
         }
         $pass = password_hash($_POST["pass"], PASSWORD_ARGON2ID);
 
-        require_once "../database/connexionBDD.php";
+        $db = getPdo();
 
         $recupNouvelEntree = $db->prepare(" INSERT INTO `users`(`pseudo`,`email`,`pass`)
             VALUES (:pseudo, :email, '$pass')");
@@ -31,7 +34,8 @@ if (isset($_POST) && !empty($_POST)) {
             "email" => $_POST["email"],
             "statut" => $user["statut"]
         ];
-        header("Location: formConnexion.php");
+
+        redirect('', '');
     } else {
         $_SESSION['erreur'] = "Vous devez remplir tous les champs";
         header("Location: formInscription.php");

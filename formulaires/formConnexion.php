@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="/style.css">
 <?php
+require_once ('../librairies/patron.php');
+?>
+<?php
 $pageTitle = "CONNEXION";
-ob_start();
-require('../templates/formulaires/connexion.php');
-$pageContent = ob_get_clean();
-require('../templates/layout.php');
+render('../', 'formulaires/connexion', compact('pageTitle'));
 ?>

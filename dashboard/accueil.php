@@ -1,15 +1,16 @@
 <?php
-session_start();
+session_start(); //http://astromarin.test/formulaires/formConnexion.php
+
+require_once ('../librairies/database/database.php');
+require_once ('../librairies/patron.php');
+
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
-    header("Location: /formulaire/formConnexion.php");
-    die();
+
+  redirect('/formulaires/formConnexion.php', '');
 }
 ?>
     <link rel="stylesheet" href="/style.css">
 <?php
 $pageTitle = "- DASHBOARD/ACCUEIL";
-ob_start();
-require('../templates/accueilDashboard.php');
-$pageContent = ob_get_clean();
-require('../templates/layout.php');
+render('../', 'accueilDashboard', compact('pageTitle'));
 ?>

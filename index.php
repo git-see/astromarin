@@ -1,10 +1,16 @@
 <?php
 session_start();
+
+require_once ('librairies/database/database.php');
+require_once ('librairies/patron.php');
+
 if (!isset($_SESSION["user"]) || !isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Membre") || !isset($_SESSION["user"]) &&  !($_SESSION["user"]["statut"] == "Admin")) {
-    header("Location: /formulaire/formConnexion.php");
-    die();
+    
+    redirect('/formulaires/formConnexion.php', '');
+
 } else {
-    require_once('database/connexionBDD.php');
+
+    $db = getPdo();
 
     $sql = 'SELECT `id`, `signe`, `image` FROM `signes`
 ';
@@ -12,13 +18,10 @@ if (!isset($_SESSION["user"]) || !isset($_SESSION["user"]) && !($_SESSION["user"
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    require_once('database/deconnexionBDD.php');
+    require_once('librairies/database/deconnexionBDD.php');
 }
 ?>
 <?php
 $pageTitle = "ACCUEIL";
-ob_start();
-require('templates/indexAccueil.php');
-$pageContent = ob_get_clean();
-require('templates/layout.php');
+render('', 'indexAccueil', ['pageTitle' => $pageTitle, 'result' => $result]);
 ?>

@@ -1,8 +1,13 @@
 <?php
 session_start();
+
+require_once ('../../../librairies/database/database.php');
+require_once ('../../../librairies/patron.php');
+
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
-    header("Location: /formulaire/formConnexion.php");
-    die();
+
+    redirect('../../../../formulaires/formConnexion.php', '');
+
 }
 
 if ($_POST) {
@@ -15,7 +20,7 @@ if ($_POST) {
         && isset($_POST['textSanteJour']) && !empty($_POST['textSanteJour'])
     ) {
 
-        require_once('../../../database/connexionBDD.php');
+        $db = getPdo();
 
         $signe = strip_tags($_POST['signes_id']);
         $dateJour = strip_tags($_POST['dateJour']);
@@ -47,8 +52,5 @@ if ($_POST) {
 <link rel="stylesheet" href="/style.css">
 <?php
 $pageTitle = "- AJOUTER JOUR";
-ob_start();
-require('../../../templates/jour/ajouter.php');
-$pageContent = ob_get_clean();
-require('../../../templates/layout.php');
+render('../../../', 'jour/ajouter', compact('pageTitle', 'result'));
 ?>

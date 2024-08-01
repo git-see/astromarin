@@ -1,8 +1,13 @@
 <?php
 session_start();
+
+require_once ('../../../librairies/database/database.php');
+require_once ('../../../librairies/patron.php');
+
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
-    header("Location: /formulaire/formConnexion.php");
-    die();
+
+    redirect('../../../../formulaires/formConnexion.php', '');
+
 }
 
 if ($_POST) {
@@ -15,7 +20,7 @@ if ($_POST) {
         && isset($_POST['textSanteAnnee']) && !empty($_POST['textSanteAnnee'])
     ) {
 
-        require_once('../../../database/connexionBDD.php');
+        $db = getPdo();
 
         $signe = strip_tags($_POST['signes_id']);
         $dateAnnee = strip_tags($_POST['dateAnnee']);
@@ -47,8 +52,5 @@ if ($_POST) {
 <link rel="stylesheet" href="/style.css">
 <?php
 $pageTitle = "- RAJOUTER UNE PRÉDICTION SUPPRIMÉE";
-ob_start();
-require('../../../templates/annee/ajouter.php');
-$pageContent = ob_get_clean();
-require('../../../templates/layout.php');
+render('../../../', 'annee/ajouter', compact('pageTitle', 'result'));
 ?>
