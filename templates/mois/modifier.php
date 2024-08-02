@@ -15,22 +15,22 @@
 
             <form action="" method="post">
                 <div class="form-group m-5">
-                    <label for="dateMois" class="fs-5">MOIS</label>
-                    <input type="text" id="dateMois" name="dateMois" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['dateMois'])))) ?>" required>
+                    <label for="champDate" class="fs-5">MOIS</label>
+                    <input type="text" id="champDate" name="champDate" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['champDate'])))) ?>" required>
                 </div>
                 <div class="form-group mb-5">
-                    <label for="textAmourMois" class="fs-5">AMOUR</label>
-                    <textarea type="text" id="textAmourMois" name="textAmourMois" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['textAmourMois'])))) ?>" required>
+                    <label for="textAmour" class="fs-5">AMOUR</label>
+                    <textarea type="text" id="textAmour" name="textAmour" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['textAmour'])))) ?>" required>
                         </textarea>
                 </div>
                 <div class="form-group mb-5">
-                    <label for="textTravailMois" class="fs-5">TRAVAIL</label>
-                    <textarea type="text" id="textTravailMois" name="textTravailMois" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['textTravailMois'])))) ?>" required>
+                    <label for="textTravail" class="fs-5">TRAVAIL</label>
+                    <textarea type="text" id="textTravail" name="textTravail" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['textTravail'])))) ?>" required>
                         </textarea>
                 </div>
                 <div class="form-group mb-5">
-                    <label for="textSanteMois" class="fs-5">SANTE</label>
-                    <textarea type="text" id="textSanteMois" name="textSanteMois" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['textSanteMois'])))) ?>" required>
+                    <label for="textSante" class="fs-5">SANTE</label>
+                    <textarea type="text" id="textSante" name="textSante" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['textSante'])))) ?>" required>
                         </textarea>
                 </div>
                 <div class="float-end mx-5">

@@ -12,7 +12,7 @@ if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
     redirect('../../../../formulaires/formConnexion.php', '');
 } else {
 
-    $result = $annee->annee();
+    $result = $annee->panorama();
 }
 ?>
 <link rel="stylesheet" href="/style.css">

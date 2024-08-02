@@ -11,7 +11,6 @@ $jour = new Jour();
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
     redirect('../../../../formulaires/formConnexion.php', '');
-
 }
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {

@@ -7,13 +7,12 @@ require_once('../../../librairies/models/Jour.php');
 
 $jour = new jour();
 
-
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
     redirect('../../../../formulaires/formConnexion.php', '');
 } else {
 
-    $result = $jour->jour();
+    $result = $jour->panorama();
 }
 ?>
 <link rel="stylesheet" href="/style.css">

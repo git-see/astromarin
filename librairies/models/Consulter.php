@@ -5,8 +5,6 @@ require_once('../../../librairies/models/Model.php');
 class Consulter extends Model
 {
 
-
-
     /*
 * Retourne la liste de tous les signes
 *
@@ -23,7 +21,7 @@ class Consulter extends Model
     }
 
     /*
-* Retourne une seule prédiction pour toutes les périodes et selon le signe
+* Retourne une seule prédiction pour toutes les périodes et selon le signe (jointure)
 *
 * @return array|bool   true si le signe est trouvé sinon false
 */

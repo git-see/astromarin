@@ -15,10 +15,10 @@ if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 if ($_POST) {
     if (
         isset($_POST['id']) && !empty($_POST['id'])
-        && isset($_POST['dateAnnee']) && !empty($_POST['dateAnnee'])
-        && isset($_POST['textAmourAnnee']) && !empty($_POST['textAmourAnnee'])
-        && isset($_POST['textTravailAnnee']) && !empty($_POST['textTravailAnnee'])
-        && isset($_POST['textSanteAnnee']) && !empty($_POST['textSanteAnnee'])
+        && isset($_POST['champDate']) && !empty($_POST['champDate'])
+        && isset($_POST['textAmour']) && !empty($_POST['textAmour'])
+        && isset($_POST['textTravail']) && !empty($_POST['textTravail'])
+        && isset($_POST['textSante']) && !empty($_POST['textSante'])
     ) {
 
         $annee->modifie1();
@@ -41,11 +41,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     if (!$modifie) {
         $_SESSION['erreur'] = "Cet id n'existe pas";
-        header('Location: index.php');
+        header('Location: ../index.php');
     }
 } else {
     $_SESSION['erreur'] = "URL invalide";
-    header('Location: index.php');
+    header('Location: ../index.php');
 }
 if (
     isset($_GET['id']) && !empty($_GET['id'])
@@ -59,6 +59,6 @@ if (
 
 <link rel="stylesheet" href="/style.css">
 <?php
-$pageTitle = "- MODIFIER UNE PRÉDICTION";
+$pageTitle = "- MODIFIER UNE PRÉDICTION ANNUELLE";
 render('../../../', 'annee/modifier', compact('pageTitle', 'sign', 'modifie'));
 ?>
