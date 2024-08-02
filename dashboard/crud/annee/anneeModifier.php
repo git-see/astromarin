@@ -3,6 +3,9 @@ session_start();
 
 require_once('../../../librairies/database/database.php');
 require_once('../../../librairies/patron.php');
+require_once('../../../librairies/models/Annee.php');
+
+$annee = new Annee();
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
@@ -18,10 +21,10 @@ if ($_POST) {
         && isset($_POST['textSanteAnnee']) && !empty($_POST['textSanteAnnee'])
     ) {
 
-        modifieAn1();
+        $annee->modifie1();
 
         $_SESSION['message'] = "Prédiction modifiée";
-        require_once('../../../database/deconnexionBDD.php');
+        require_once('../../../librairies/database/deconnexionBDD.php');
 
         header('Location: annee.php');
     } else {
@@ -34,7 +37,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     $id = strip_tags(stripslashes(htmlentities(trim($_GET['id']))));
 
-    $modifie = modifieAn2($id);
+    $modifie = $annee->modifie2($id);
 
     if (!$modifie) {
         $_SESSION['erreur'] = "Cet id n'existe pas";
@@ -50,12 +53,12 @@ if (
 
     $id = strip_tags(stripslashes(htmlentities(trim($_GET['id']))));
 
-    $sign = modifieAn3($id);
+    $sign = $annee->modifie3($id);
 }
 ?>
 
 <link rel="stylesheet" href="/style.css">
 <?php
 $pageTitle = "- MODIFIER UNE PRÉDICTION";
-render('../../../', 'annee/modifier', compact('pageTitle', 'sign', 'modifie', 'result'));
+render('../../../', 'annee/modifier', compact('pageTitle', 'sign', 'modifie'));
 ?>

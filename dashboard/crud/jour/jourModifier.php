@@ -3,6 +3,9 @@ session_start();
 
 require_once('../../../librairies/database/database.php');
 require_once('../../../librairies/patron.php');
+require_once('../../../librairies/models/Jour.php');
+
+$jour = new Jour();
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
@@ -18,10 +21,10 @@ if ($_POST) {
         && isset($_POST['textSanteJour']) && !empty($_POST['textSanteJour'])
     ) {
 
-        modifieJour1();
+        $jour->modifie1();
 
         $_SESSION['message'] = "Prédiction modifiée";
-        require_once('../../../database/deconnexionBDD.php');
+        require_once('../../../librairies/database/deconnexionBDD.php');
 
         header('Location: jour.php');
     } else {
@@ -33,7 +36,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     $id = strip_tags(stripslashes(htmlentities(trim($_GET['id']))));
 
-    $modifie = modifieJour2($id);
+    $modifie = $jour->modifie2($id);
 
     if (!$modifie) {
         $_SESSION['erreur'] = "Cet id n'existe pas";
@@ -48,11 +51,11 @@ if (
 ) {
     $id = strip_tags(stripslashes(htmlentities(trim($_GET['id']))));
 
-    $sign = modifieJour3($id);
+    $sign = $jour->modifie3($id);
 }
 ?>
 <link rel="stylesheet" href="/style.css">
 <?php
 $pageTitle = "- MODIFIER JOUR";
-render('../../../', 'jour/modifier', compact('pageTitle', 'sign', 'modifie', 'result'));
+render('../../../', 'jour/modifier', compact('pageTitle', 'sign', 'modifie'));
 ?>

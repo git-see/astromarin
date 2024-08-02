@@ -3,6 +3,9 @@ session_start();
 
 require_once('../../../librairies/database/database.php');
 require_once('../../../librairies/patron.php');
+require_once('../../../librairies/models/Jour.php');
+
+$jour = new Jour();
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
@@ -19,7 +22,7 @@ if ($_POST) {
         && isset($_POST['textSanteJour']) && !empty($_POST['textSanteJour'])
     ) {
 
-        ajoutJour();
+        $jour->ajout();
 
         $_SESSION['message'] = "Prédiction ajoutée";
         require_once('../../../librairies/database/deconnexionBDD.php');
@@ -33,5 +36,5 @@ if ($_POST) {
 <link rel="stylesheet" href="/style.css">
 <?php
 $pageTitle = "- AJOUTER JOUR";
-render('../../../', 'jour/ajouter', compact('pageTitle', 'result'));
+render('../../../', 'jour/ajouter', compact('pageTitle'));
 ?>

@@ -3,6 +3,9 @@ session_start();
 
 require_once ('../../../librairies/database/database.php');
 require_once ('../../../librairies/patron.php');
+require_once('../../../librairies/models/Jour.php');
+
+$jour = new Jour();
 
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
@@ -15,7 +18,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     $id = strip_tags($_GET['id']);
 
-    $recuperer = supprimeJour1($id);
+    $recuperer = $jour->supprime1($id);
 
     if (!$recuperer) {
         $_SESSION['erreur'] = "Cet id n'existe pas";
@@ -23,7 +26,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         die();
     }
 
-    supprimejour2($id);
+    $jour->supprime2($id);
 
     $_SESSION['message'] = "Prédiction supprimée";
     header('Location: jour.php');
