@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-require_once ('../../../librairies/database/database.php');
-require_once ('../../../librairies/patron.php');
+require_once('../../../librairies/database/database.php');
+require_once('../../../librairies/patron.php');
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
     redirect('../../../../formulaires/formConnexion.php', '');
-
 }
 
 if ($_POST) {
@@ -19,23 +18,7 @@ if ($_POST) {
         && isset($_POST['textSanteJour']) && !empty($_POST['textSanteJour'])
     ) {
 
-        $db = getPdo();
-
-        $id = strip_tags($_POST['id']);
-        $dateJour = strip_tags($_POST['dateJour']);
-        $textAmourJour = strip_tags($_POST['textAmourJour']);
-        $textTravailJour = strip_tags($_POST['textTravailJour']);
-        $textSanteJour = strip_tags($_POST['textSanteJour']);
-
-        $sql = 'UPDATE jour SET dateJour = :dateJour, textAmourJour = :textAmourJour, textTravailJour = :textTravailJour, textSanteJour = :textSanteJour WHERE id = :id;';
-
-        $query = $db->prepare($sql);
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
-        $query->bindValue(':dateJour', $dateJour, PDO::PARAM_STR);
-        $query->bindValue(':textAmourJour', $textAmourJour, PDO::PARAM_STR);
-        $query->bindValue(':textTravailJour', $textTravailJour, PDO::PARAM_STR);
-        $query->bindValue(':textSanteJour', $textSanteJour, PDO::PARAM_STR);
-        $query->execute();
+        modifieJour1();
 
         $_SESSION['message'] = "Prédiction modifiée";
         require_once('../../../database/deconnexionBDD.php');
@@ -48,14 +31,9 @@ if ($_POST) {
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
 
-    $db = getPdo();
+    $id = strip_tags(stripslashes(htmlentities(trim($_GET['id']))));
 
-    $id = strip_tags($_GET['id']);
-    $sql = 'SELECT * FROM jour WHERE id = :id;';
-    $query = $db->prepare($sql);
-    $query->bindValue(':id', $id, PDO::PARAM_INT);
-    $query->execute();
-    $modifie = $query->fetch();
+    $modifie = modifieJour2($id);
 
     if (!$modifie) {
         $_SESSION['erreur'] = "Cet id n'existe pas";
@@ -68,10 +46,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 if (
     isset($_GET['id']) && !empty($_GET['id'])
 ) {
-    $sql2 = 'SELECT signe FROM signes,jour WHERE signes.id = jour.signes_id AND jour.id = :id';
-    $query2 = $db->prepare($sql2);
-    $query2->execute(['id' => $_GET['id']]);
-    $sign = $query2->fetch();
+    $id = strip_tags(stripslashes(htmlentities(trim($_GET['id']))));
+
+    $sign = modifieJour3($id);
 }
 ?>
 <link rel="stylesheet" href="/style.css">

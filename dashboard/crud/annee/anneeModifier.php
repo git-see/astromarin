@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-require_once ('../../../librairies/database/database.php');
-require_once ('../../../librairies/patron.php');
+require_once('../../../librairies/database/database.php');
+require_once('../../../librairies/patron.php');
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
     redirect('../../../../formulaires/formConnexion.php', '');
-
 }
 
 if ($_POST) {
@@ -19,24 +18,7 @@ if ($_POST) {
         && isset($_POST['textSanteAnnee']) && !empty($_POST['textSanteAnnee'])
     ) {
 
-        $db = getPdo();
-
-        $id = strip_tags($_POST['id']);
-        $dateAnnee = strip_tags($_POST['dateAnnee']);
-        $textAmourAnnee = strip_tags($_POST['textAmourAnnee']);
-        $textTravailAnnee = strip_tags($_POST['textTravailAnnee']);
-        $textSanteAnnee = strip_tags($_POST['textSanteAnnee']);
-
-        // MODIFIER
-        $sql = 'UPDATE annee SET dateAnnee = :dateAnnee, textAmourAnnee = :textAmourAnnee, textTravailAnnee = :textTravailAnnee, textSanteAnnee = :textSanteAnnee WHERE id = :id;';
-
-        $query = $db->prepare($sql);
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
-        $query->bindValue(':dateAnnee', $dateAnnee, PDO::PARAM_STR);
-        $query->bindValue(':textAmourAnnee', $textAmourAnnee, PDO::PARAM_STR);
-        $query->bindValue(':textTravailAnnee', $textTravailAnnee, PDO::PARAM_STR);
-        $query->bindValue(':textSanteAnnee', $textSanteAnnee, PDO::PARAM_STR);
-        $query->execute();
+        modifieAn1();
 
         $_SESSION['message'] = "Prédiction modifiée";
         require_once('../../../database/deconnexionBDD.php');
@@ -50,14 +32,9 @@ if ($_POST) {
 // RÉCUPÉRER ET AFFICHER
 if (isset($_GET['id']) && !empty($_GET['id'])) {
 
-    $db = getPdo();
+    $id = strip_tags(stripslashes(htmlentities(trim($_GET['id']))));
 
-    $id = strip_tags($_GET['id']);
-    $sql = 'SELECT * FROM annee WHERE id = :id;';
-    $query = $db->prepare($sql);
-    $query->bindValue(':id', $id, PDO::PARAM_INT);
-    $query->execute();
-    $modifie = $query->fetch();
+    $modifie = modifieAn2($id);
 
     if (!$modifie) {
         $_SESSION['erreur'] = "Cet id n'existe pas";
@@ -70,10 +47,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 if (
     isset($_GET['id']) && !empty($_GET['id'])
 ) {
-    $sql2 = 'SELECT signe FROM signes,annee WHERE signes.id = annee.signes_id AND annee.id = :id';
-    $query2 = $db->prepare($sql2);
-    $query2->execute(['id' => $_GET['id']]);
-    $sign = $query2->fetch();
+
+    $id = strip_tags(stripslashes(htmlentities(trim($_GET['id']))));
+
+    $sign = modifieAn3($id);
 }
 ?>
 

@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-require_once ('../../../librairies/database/database.php');
-require_once ('../../../librairies/patron.php');
+require_once('../../../librairies/database/database.php');
+require_once('../../../librairies/patron.php');
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
     redirect('../../../../formulaires/formConnexion.php', '');
-
 }
 
 if ($_POST) {
@@ -20,28 +19,10 @@ if ($_POST) {
         && isset($_POST['textSanteAnnee']) && !empty($_POST['textSanteAnnee'])
     ) {
 
-        $db = getPdo();
-
-        $signe = strip_tags($_POST['signes_id']);
-        $dateAnnee = strip_tags($_POST['dateAnnee']);
-        $textAmourAnnee = strip_tags($_POST['textAmourAnnee']);
-        $textTravailAnnee = strip_tags($_POST['textTravailAnnee']);
-        $textSanteAnnee = strip_tags($_POST['textSanteAnnee']);
-
-        $sql = 'INSERT INTO annee (signes_id, dateAnnee, textAmourAnnee, textTravailAnnee, textSanteAnnee) VALUES (:signes_id, :dateAnnee, :textAmourAnnee, :textTravailAnnee, :textSanteAnnee)';
-
-        $query = $db->prepare($sql);
-
-        $query->bindValue(':signes_id', $signe, PDO::PARAM_INT);
-        $query->bindValue(':dateAnnee', $dateAnnee, PDO::PARAM_STR);
-        $query->bindValue(':textAmourAnnee', $textAmourAnnee, PDO::PARAM_STR);
-        $query->bindValue(':textTravailAnnee', $textTravailAnnee, PDO::PARAM_STR);
-        $query->bindValue(':textSanteAnnee', $textSanteAnnee, PDO::PARAM_STR);
-
-        $query->execute();
+        ajoutAn();
 
         $_SESSION['message'] = "Prédiction ajoutée";
-        require_once('../../../database/deconnexionBDD.php');
+        require_once('../../../librairies/database/deconnexionBDD.php');
 
         header('Location: annee.php');
     } else {
