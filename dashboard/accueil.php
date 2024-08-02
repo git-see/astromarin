@@ -1,5 +1,5 @@
 <?php
-session_start(); //http://astromarin.test/formulaires/formConnexion.php
+session_start();
 
 require_once ('../librairies/database/database.php');
 require_once ('../librairies/patron.php');

@@ -13,25 +13,25 @@
 </head>
 
 <body id="bodyAccueil">
-  <!-- ENTETE -->
-  <header>
+    <!-- ENTETE -->
+    <header>
         <div id="entete">
             <div>
                 <h1 id="h1">AstroMarin</h1>
             </div>
             <?php
-                if (isset($_SESSION["user"])) {  ?>
-            <div style="display:flex; justify-content:space-around;margin-right:3em; margin-left:2em;color:aqua;align-self:center;gap:1em;">
-                <a href="/formulaires/deconnexion.php"><img src="images/connexion.png" alt="Se déconnecter"></a>
+            if (isset($_SESSION["user"])) {  ?>
+                <div style="display:flex; justify-content:space-around;margin-right:3em; margin-left:2em;color:aqua;align-self:center;gap:1em;">
+                    <a href="/formulaires/deconnexion.php"><img src="images/connexion.png" alt="Se déconnecter"></a>
                 <?php
-                } ?>
+            } ?>
                 <!-- PRIVILÈGE ADMIN -->
                 <?php
                 if (isset($_SESSION["user"]) && ($_SESSION["user"]["statut"] == "Admin")) {  ?>
                     <a href="/dashboard/accueil.php" style="font-size:20px;color:aqua;align-self:center;">Dashboard</a>
                 <?php
                 } ?>
-            </div>
+                </div>
         </div>
         <div id="slogan">
             <p>Le monde marin nous parle,</p>

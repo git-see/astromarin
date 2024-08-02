@@ -1,8 +1,10 @@
 <?php
 session_start();
 
-require_once('librairies/database/database.php');
 require_once('librairies/patron.php');
+require_once('librairies/models/Consulter.php');
+
+$model = new Consulter();
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
 
@@ -11,7 +13,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     $id = strip_tags(stripslashes(htmlentities(trim($_GET['id']))));
 
-    $result = afficherUn($id);
+    $result = $model->afficherUn($id);
 
     require_once('librairies/database/deconnexionBDD.php');
 } else {

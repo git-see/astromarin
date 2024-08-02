@@ -3,6 +3,9 @@ session_start();
 
 require_once('../../../librairies/database/database.php');
 require_once('../../../librairies/patron.php');
+require_once('../../../librairies/models/Annee.php');
+
+$annee = new Annee();
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
@@ -19,7 +22,7 @@ if ($_POST) {
         && isset($_POST['textSanteAnnee']) && !empty($_POST['textSanteAnnee'])
     ) {
 
-        ajoutAn();
+        $annee->ajout();
 
         $_SESSION['message'] = "Prédiction ajoutée";
         require_once('../../../librairies/database/deconnexionBDD.php');
@@ -33,5 +36,5 @@ if ($_POST) {
 <link rel="stylesheet" href="/style.css">
 <?php
 $pageTitle = "- RAJOUTER UNE PRÉDICTION SUPPRIMÉE";
-render('../../../', 'annee/ajouter', compact('pageTitle', 'result'));
+render('../../../', 'annee/ajouter', compact('pageTitle'));
 ?>

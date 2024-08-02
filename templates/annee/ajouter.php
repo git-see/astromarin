@@ -10,7 +10,7 @@
             }
             ?>
             <h1 class="text-center m-5">Vous avez supprimé par erreur? <br> Recréez votre prédiction ici</h1>
-            <form action="" method="post">
+            <form action="/dashboard/crud/annee/anneeAjouter.php" method="post">
                 <div class="form-group card-title text-center text-primary fw-bolder mt-5 mb-5">
                     <label for="signes_id">QUEL SIGNE ? &#x2B9B;</label>
                     <select type="text" id="signes_id" class="form-control text-center fs-5 text-primary " name="signes_id" required>

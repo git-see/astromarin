@@ -3,13 +3,18 @@ session_start();
 
 require_once('../../../librairies/database/database.php');
 require_once('../../../librairies/patron.php');
+require_once('../../../librairies/models/Annee.php');
+
+require_once('../../../librairies/models/Mois.php');
+
+$mois = new Mois();
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
     redirect('../../../../formulaires/formConnexion.php', '');
 } else {
 
-    $result = mois();
+    $result = $mois->mois();
 }
 ?>
 <link rel="stylesheet" href="/style.css">

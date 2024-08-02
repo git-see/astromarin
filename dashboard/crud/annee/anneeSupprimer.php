@@ -3,6 +3,9 @@ session_start();
 
 require_once('../../../librairies/database/database.php');
 require_once('../../../librairies/patron.php');
+require_once('../../../librairies/models/Annee.php');
+
+$annee = new Annee();
 
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
@@ -15,7 +18,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     $id = strip_tags($_GET['id']);
 
-    $recuperer = supprimeAn1($id);
+    $recuperer = $annee->supprime1($id);
 
     // CONFIRMER'IL EXISTE
     if (!$recuperer) {
@@ -24,7 +27,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         die();
     }
 
-    supprimeAn2($id);
+    $annee->supprime2($id);
 
     $_SESSION['message'] = "Prédiction supprimée";
     header('Location: annee.php');
