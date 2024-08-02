@@ -31,3 +31,6 @@ en plus des actions de l’utilisateur, l’administrateur peut :
 
 Créer un site fonctionnel en procédural, tester, valider
 
+## Étape 2 : optimiser le site (green)
+
+  -> factoriser

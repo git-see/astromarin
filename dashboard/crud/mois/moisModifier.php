@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-require_once ('../../../librairies/database/database.php');
-require_once ('../../../librairies/patron.php');
+require_once('../../../librairies/database/database.php');
+require_once('../../../librairies/patron.php');
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
     redirect('../../../../formulaires/formConnexion.php', '');
-
 }
 
 if ($_POST) {
@@ -19,24 +18,7 @@ if ($_POST) {
         && isset($_POST['textSanteMois']) && !empty($_POST['textSanteMois'])
     ) {
 
-        $db = getPdo();
-
-        $id = strip_tags($_POST['id']);
-        $dateMois = strip_tags($_POST['dateMois']);
-        $textAmourMois = strip_tags($_POST['textAmourMois']);
-        $textTravailMois = strip_tags($_POST['textTravailMois']);
-        $textSanteMois = strip_tags($_POST['textSanteMois']);
-
-        // MODIFIER
-        $sql = 'UPDATE mois SET dateMois = :dateMois, textAmourMois = :textAmourMois, textTravailMois = :textTravailMois, textSanteMois = :textSanteMois WHERE id = :id;';
-
-        $query = $db->prepare($sql);
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
-        $query->bindValue(':dateMois', $dateMois, PDO::PARAM_STR);
-        $query->bindValue(':textAmourMois', $textAmourMois, PDO::PARAM_STR);
-        $query->bindValue(':textTravailMois', $textTravailMois, PDO::PARAM_STR);
-        $query->bindValue(':textSanteMois', $textSanteMois, PDO::PARAM_STR);
-        $query->execute();
+        modifieMois1();
 
         $_SESSION['message'] = "Prédiction modifiée";
         require_once('../../../database/deconnexionBDD.php');
@@ -50,14 +32,9 @@ if ($_POST) {
 // RÉCUPÉRER ET AFFICHER
 if (isset($_GET['id']) && !empty($_GET['id'])) {
 
-    $db = getPdo();
+    $id = strip_tags(stripslashes(htmlentities(trim($_GET['id']))));
 
-    $id = strip_tags($_GET['id']);
-    $sql = 'SELECT * FROM mois WHERE id = :id;';
-    $query = $db->prepare($sql);
-    $query->bindValue(':id', $id, PDO::PARAM_INT);
-    $query->execute();
-    $modifie = $query->fetch();
+    $modifie = modifieMois2($id);
 
     if (!$modifie) {
         $_SESSION['erreur'] = "Cet id n'existe pas";
@@ -70,10 +47,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 if (
     isset($_GET['id']) && !empty($_GET['id'])
 ) {
-    $sql2 = 'SELECT signe FROM signes,mois WHERE signes.id = mois.signes_id AND mois.id = :id';
-    $query2 = $db->prepare($sql2);
-    $query2->execute(['id' => $_GET['id']]);
-    $sign = $query2->fetch();
+    $id = strip_tags(stripslashes(htmlentities(trim($_GET['id']))));
+
+    $sign = modifieMois3($id);
 }
 ?>
 <link rel="stylesheet" href="/style.css">

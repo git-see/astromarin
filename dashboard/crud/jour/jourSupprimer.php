@@ -13,15 +13,9 @@ if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
 
-    $db = getPdo();
-
     $id = strip_tags($_GET['id']);
 
-    $sql = 'SELECT * FROM jour WHERE id = :id;';
-    $query = $db->prepare($sql);
-    $query->bindValue(':id', $id, PDO::PARAM_INT);
-    $query->execute();
-    $recuperer = $query->fetch();
+    $recuperer = supprimeJour1($id);
 
     if (!$recuperer) {
         $_SESSION['erreur'] = "Cet id n'existe pas";
@@ -29,10 +23,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         die();
     }
 
-    $sql = 'DELETE FROM jour WHERE id = :id;';
-    $query = $db->prepare($sql);
-    $query->bindValue(':id', $id, PDO::PARAM_INT);
-    $query->execute();
+    supprimejour2($id);
+
     $_SESSION['message'] = "Prédiction supprimée";
     header('Location: jour.php');
 } else {

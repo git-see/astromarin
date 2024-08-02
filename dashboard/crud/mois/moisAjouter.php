@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-require_once ('../../../librairies/database/database.php');
-require_once ('../../../librairies/patron.php');
+require_once('../../../librairies/database/database.php');
+require_once('../../../librairies/patron.php');
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
     redirect('../../../../formulaires/formConnexion.php', '');
-
 }
 
 if ($_POST) {
@@ -20,28 +19,10 @@ if ($_POST) {
         && isset($_POST['textSanteMois']) && !empty($_POST['textSanteMois'])
     ) {
 
-        $db = getPdo();
-
-        $signe = strip_tags($_POST['signes_id']);
-        $dateMois = strip_tags($_POST['dateMois']);
-        $textAmourMois = strip_tags($_POST['textAmourMois']);
-        $textTravailMois = strip_tags($_POST['textTravailMois']);
-        $textSanteMois = strip_tags($_POST['textSanteMois']);
-
-        $sql = 'INSERT INTO mois (signes_id, dateMois, textAmourMois, textTravailMois, textSanteMois) VALUES (:signes_id, :dateMois, :textAmourMois, :textTravailMois, :textSanteMois)';
-
-        $query = $db->prepare($sql);
-
-        $query->bindValue(':signes_id', $signe, PDO::PARAM_INT);
-        $query->bindValue(':dateMois', $dateMois, PDO::PARAM_STR);
-        $query->bindValue(':textAmourMois', $textAmourMois, PDO::PARAM_STR);
-        $query->bindValue(':textTravailMois', $textTravailMois, PDO::PARAM_STR);
-        $query->bindValue(':textSanteMois', $textSanteMois, PDO::PARAM_STR);
-
-        $query->execute();
+        ajoutMois();
 
         $_SESSION['message'] = "Prédiction ajoutée";
-        require_once('../../../database/deconnexionBDD.php');
+        require_once('../../../librairies/database/deconnexionBDD.php');
 
         header('Location: mois.php');
     } else {

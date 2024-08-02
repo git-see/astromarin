@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-require_once ('../../../librairies/database/database.php');
-require_once ('../../../librairies/patron.php');
+require_once('../../../librairies/database/database.php');
+require_once('../../../librairies/patron.php');
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
     redirect('../../../../formulaires/formConnexion.php', '');
-
 }
 
 if ($_POST) {
@@ -20,28 +19,10 @@ if ($_POST) {
         && isset($_POST['textSanteJour']) && !empty($_POST['textSanteJour'])
     ) {
 
-        $db = getPdo();
-
-        $signe = strip_tags($_POST['signes_id']);
-        $dateJour = strip_tags($_POST['dateJour']);
-        $textAmourJour = strip_tags($_POST['textAmourJour']);
-        $textTravailJour = strip_tags($_POST['textTravailJour']);
-        $textSanteJour = strip_tags($_POST['textSanteJour']);
-
-        $sql = 'INSERT INTO jour (signes_id, dateJour, textAmourJour, textTravailJour, textSanteJour) VALUES (:signes_id, :dateJour, :textAmourJour, :textTravailJour, :textSanteJour)';
-
-        $query = $db->prepare($sql);
-
-        $query->bindValue(':signes_id', $signe, PDO::PARAM_INT);
-        $query->bindValue(':dateJour', $dateJour, PDO::PARAM_STR);
-        $query->bindValue(':textAmourJour', $textAmourJour, PDO::PARAM_STR);
-        $query->bindValue(':textTravailJour', $textTravailJour, PDO::PARAM_STR);
-        $query->bindValue(':textSanteJour', $textSanteJour, PDO::PARAM_STR);
-
-        $query->execute();
+        ajoutJour();
 
         $_SESSION['message'] = "Prédiction ajoutée";
-        require_once('../../../database/deconnexionBDD.php');
+        require_once('../../../librairies/database/deconnexionBDD.php');
 
         header('Location: jour.php');
     } else {
