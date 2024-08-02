@@ -13,14 +13,12 @@ if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
     redirect('../../../../formulaires/formConnexion.php', '');
 }
 
-// GÉRER LA SUPPRESSION DE L'ANNÉE
 if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     $id = strip_tags($_GET['id']);
 
     $recuperer = $annee->supprime1($id);
 
-    // CONFIRMER'IL EXISTE
     if (!$recuperer) {
         $_SESSION['erreur'] = "Cet id n'existe pas";
         header('Location: annee.php');

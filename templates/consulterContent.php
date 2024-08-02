@@ -8,36 +8,36 @@
         </h3>
 
         <h4 class="consulter">Amour</h4>
-        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textAmourJour'])))) ?></p>
+        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textAmour'])))) ?></p>
 
         <h4 class="consulter">Travail</h4>
-        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textTravailJour'])))) ?></p>
+        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textTravail'])))) ?></p>
 
         <h4 class="consulter">Santé</h4>
-        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textSanteJour'])))) ?></p>
+        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textSante'])))) ?></p>
 
         <!---------- CE MOIS ---------->
-        <h3 class="fw-bolder text-primary m-5">MOIS <n style="color:blue"><?php echo strip_tags(stripslashes(htmlentities(trim($result['dateMois'])))) ?></n>
+        <h3 class="fw-bolder text-primary m-5">MOIS <n style="color:blue"><?php echo strip_tags(stripslashes(htmlentities(trim($result['champDate'])))) ?></n>
         </h3>
 
         <h4 class="consulter">Amour</h4>
-        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textAmourMois'])))) ?></p>
+        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textAmour'])))) ?></p>
 
         <h4 class="consulter">Travail</h4>
-        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textTravailMois'])))) ?></p>
+        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textTravail'])))) ?></p>
 
         <h4 class="consulter">Santé</h4>
-        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textSanteMois'])))) ?></p>
+        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textSante'])))) ?></p>
 
         <!---------- CETTE ANNÉE ---------->
         <h3 class="fw-bolder text-primary m-5">ANNÉE <n style="color:blue"><?php echo strip_tags(stripslashes(htmlentities(trim(Date('Y'))))) ?></n>
         </h3>
         <h4 class="consulter">Amour</h4>
-        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textAmourAnnee'])))) ?></p>
+        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textAmour'])))) ?></p>
 
         <h4 class="consulter">Travail</h4>
-        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textTravailAnnee'])))) ?></p>
+        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textTravail'])))) ?></p>
 
         <h4 class="consulter">Santé</h4>
-        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textSanteAnnee'])))) ?></p>
+        <p class="consulter"><?php echo strip_tags(stripslashes(htmlentities(trim($result['textSante'])))) ?></p>
     </section>

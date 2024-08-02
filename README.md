@@ -33,4 +33,5 @@ Créer un site fonctionnel en procédural, tester, valider
 
 ## Étape 2 : optimiser le site (green)
 
-  -> factoriser
+  -> factoriser : fonctions, requêtes
+  -> class : models, hériter

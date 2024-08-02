@@ -7,20 +7,20 @@
             <?php
             foreach ($result as $mois) {
             ?>
-                <div class="colmt-1 mb-5">
+                <div class="col mt-1 mb-5">
                     <div class="card col" style="height:550px">
                         <div class="card-body" style="height:200px">
                             <h2 pattern="^(20)\d{2}$" class="card-title text-center text-primary fw-bolder"><?php echo strip_tags(stripslashes(htmlentities(trim($mois['signe'])))) ?></h2>
-                            <h3 class="card-title text-end"><?php echo strip_tags(stripslashes(htmlentities(trim($mois['dateMois'])))) ?></h3>
+                            <h3 class="card-title text-end"><?php echo strip_tags(stripslashes(htmlentities(trim($mois['champDate'])))) ?></h3>
 
                             <h4 class="fw-bolder">Amour</h4>
-                            <p class="card-text"><?php echo strip_tags(stripslashes(htmlentities(trim($mois['textAmourMois'])))) ?></p>
+                            <p class="card-text"><?php echo strip_tags(stripslashes(htmlentities(trim($mois['textAmour'])))) ?></p>
 
                             <h4 class="fw-bolder">Travail</h4>
-                            <p class="card-text"><?php echo strip_tags(stripslashes(htmlentities(trim($mois['textTravailMois'])))) ?></p>
+                            <p class="card-text"><?php echo strip_tags(stripslashes(htmlentities(trim($mois['textTravail'])))) ?></p>
 
                             <h4 class="fw-bolder">Santé</h4>
-                            <p class="card-text"><?php echo strip_tags(stripslashes(htmlentities(trim($mois['textSanteMois'])))) ?></p>
+                            <p class="card-text"><?php echo strip_tags(stripslashes(htmlentities(trim($mois['textSante'])))) ?></p>
 
                             <div>
                                 <a onclick="return confirm('Voulez-vous supprimer définitivement ?')" href="moisSupprimer.php?id=<?php echo strip_tags(stripslashes(htmlentities(trim($mois['id'])))) ?>" class="btn btn-danger" role="button" aria-pressed="true">Supprimer</a>

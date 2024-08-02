@@ -11,16 +11,16 @@
                         <div class="card col" style="height:550px">
                             <div class="card-body" style="height:200px">
                                 <h2 pattern="^(20)\d{2}$" class="card-title text-center text-primary fw-bolder"><?php echo strip_tags(stripslashes(htmlentities(trim($annee['signe'])))) ?></h2>
-                                <h3 class="card-title text-end"><?php echo strip_tags(stripslashes(htmlentities(trim($annee['dateAnnee'])))) ?></h3>
+                                <h3 class="card-title text-end"><?php echo strip_tags(stripslashes(htmlentities(trim($annee['champDate'])))) ?></h3>
 
                                 <h4 class="fw-bolder">Amour</h4>
-                                <p class="card-text"><?php echo strip_tags(stripslashes(htmlentities(trim($annee['textAmourAnnee'])))) ?></p>
+                                <p class="card-text"><?php echo strip_tags(stripslashes(htmlentities(trim($annee['textAmour'])))) ?></p>
 
                                 <h4 class="fw-bolder">Travail</h4>
-                                <p class="card-text"><?php echo strip_tags(stripslashes(htmlentities(trim($annee['textTravailAnnee'])))) ?></p>
+                                <p class="card-text"><?php echo strip_tags(stripslashes(htmlentities(trim($annee['textTravail'])))) ?></p>
 
                                 <h4 class="fw-bolder">Santé</h4>
-                                <p class="card-text"><?php echo strip_tags(stripslashes(htmlentities(trim($annee['textSanteAnnee'])))) ?></p>
+                                <p class="card-text"><?php echo strip_tags(stripslashes(htmlentities(trim($annee['textSante'])))) ?></p>
 
                                 <div>
                                     <a onclick="return confirm('Voulez-vous supprimer définitivement ?')" href="anneeSupprimer.php?id=<?php echo strip_tags(stripslashes(htmlentities(trim($annee['id'])))) ?>" class="btn btn-danger" role="button" aria-pressed="true">Supprimer</a>

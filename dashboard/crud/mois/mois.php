@@ -14,7 +14,7 @@ if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
     redirect('../../../../formulaires/formConnexion.php', '');
 } else {
 
-    $result = $mois->mois();
+    $result = $mois->panorama();
 }
 ?>
 <link rel="stylesheet" href="/style.css">

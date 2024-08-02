@@ -29,22 +29,22 @@
                     </select>
                 </div>
                 <div class="form-group w-25 m-auto mb-5">
-                    <label for="dateMois" class="fs-5">MOIS</label>
-                    <input type="text" id="dateMois" name="dateMois" class="form-control" required>
+                    <label for="champDate" class="fs-5">MOIS</label>
+                    <input type="text" id="champDate" name="champDate" class="form-control" required>
                 </div>
                 <div class="form-group mb-5">
-                    <label for="textAmourMois" class="fs-5">AMOUR</label>
-                    <textarea type="text" id="textAmourMois" name="textAmourMois" class="form-control" required>
+                    <label for="textAmour" class="fs-5">AMOUR</label>
+                    <textarea type="text" id="textAmour" name="textAmour" class="form-control" required>
                         </textarea>
                 </div>
                 <div class="form-group mb-5">
-                    <label for="textTravailMois" class="fs-5">TRAVAIL</label>
-                    <textarea type="text" id="textTravailMois" name="textTravailMois" class="form-control" required>
+                    <label for="textTravail" class="fs-5">TRAVAIL</label>
+                    <textarea type="text" id="textTravail" name="textTravail" class="form-control" required>
                         </textarea>
                 </div>
                 <div class="form-group mb-5">
-                    <label for="textSanteMois" class="fs-5">SANTE</label>
-                    <textarea type="text" pattern="^[A-Za-z0-9 ]+$" id="textSanteMois" name="textSanteMois" class="form-control" required>
+                    <label for="textSante" class="fs-5">SANTE</label>
+                    <textarea type="text" pattern="^[A-Za-z0-9 ]+$" id="textSante" name="textSante" class="form-control" required>
                         </textarea>
                 </div>
                 <button class="btn btn-primary float-end">Envoyer</button>

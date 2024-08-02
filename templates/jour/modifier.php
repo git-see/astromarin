@@ -1,4 +1,4 @@
- <!-- GÉRER L'ANNÉE : MODIFIER -->
+ <!-- GÉRER LE JOUR : MODIFIER -->
  <section class="container pb-5 mt-5 mb-5 bg-info text-white">
      <a href="/dashboard/crud/jour/jour.php" class="p-3 fs-5 fw-bold text-primary bg-light float-end">Retour à la liste</a>
      <div class="row">
@@ -15,22 +15,22 @@
 
              <form action="" method="post">
                  <div class="form-group m-5">
-                     <label for="dateJour" class="fs-5">AUJOURD'HUI</label>
-                     <input type="text" id="dateJour" name="dateJour" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['dateJour'])))) ?>" required>
+                     <label for="champDate" class="fs-5">AUJOURD'HUI</label>
+                     <input type="text" id="champDate" name="champDate" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['champDate'])))) ?>" required>
                  </div>
                  <div class="form-group mb-5">
-                     <label for="textAmourJour" class="fs-5">AMOUR</label>
-                     <textarea type="text" id="textAmourJour" name="textAmourJour" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['textAmourJour'])))) ?>" required>
+                     <label for="textAmour" class="fs-5">AMOUR</label>
+                     <textarea type="text" id="textAmour" name="textAmour" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['textAmour'])))) ?>" required>
                         </textarea>
                  </div>
                  <div class="form-group mb-5">
-                     <label for="textTravailJour" class="fs-5">TRAVAIL</label>
-                     <textarea type="text" id="textTravailJour" name="textTravailJour" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['textTravailJour'])))) ?>" required>
+                     <label for="textTravail" class="fs-5">TRAVAIL</label>
+                     <textarea type="text" id="textTravail" name="textTravail" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['textTravail'])))) ?>" required>
                         </textarea>
                  </div>
                  <div class="form-group mb-5">
-                     <label for="textSanteJour" class="fs-5">SANTE</label>
-                     <textarea type="text" id="textSanteJour" name="textSanteJour" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['textSanteJour'])))) ?>" required>
+                     <label for="textSante" class="fs-5">SANTE</label>
+                     <textarea type="text" id="textSante" name="textSante" class="form-control" value="<?= strip_tags(stripslashes(htmlentities(trim($modifie['textSante'])))) ?>" required>
                         </textarea>
                  </div>
                  <div class="float-end mx-5">

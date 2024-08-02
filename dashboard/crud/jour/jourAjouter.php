@@ -16,10 +16,10 @@ if ($_POST) {
 
     if (
         isset($_POST['signes_id']) && !empty($_POST['signes_id'])
-        && isset($_POST['dateJour']) && !empty($_POST['dateJour'])
-        && isset($_POST['textAmourJour']) && !empty($_POST['textAmourJour'])
-        && isset($_POST['textTravailJour']) && !empty($_POST['textTravailJour'])
-        && isset($_POST['textSanteJour']) && !empty($_POST['textSanteJour'])
+        && isset($_POST['champDate']) && !empty($_POST['champDate'])
+        && isset($_POST['textAmour']) && !empty($_POST['textAmour'])
+        && isset($_POST['textTravail']) && !empty($_POST['textTravail'])
+        && isset($_POST['textSante']) && !empty($_POST['textSante'])
     ) {
 
         $jour->ajout();
