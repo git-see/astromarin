@@ -4,7 +4,7 @@ session_start();
 require_once('librairies/patron.php');
 require_once('librairies/models/Consulter.php');
 
-$model = new Consulter();
+$model = new \Models\Consulter();
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
 

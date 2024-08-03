@@ -1,22 +1,7 @@
 <?php
 session_start();
 
-require_once('../../../librairies/database/database.php');
-require_once('../../../librairies/patron.php');
-require_once('../../../librairies/models/Jour.php');
+require_once('../../../librairies/controllers/Jour.php');
 
-$jour = new jour();
-
-if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
-
-    redirect('../../../../formulaires/formConnexion.php', '');
-} else {
-
-    $result = $jour->panorama();
-}
-?>
-<link rel="stylesheet" href="/style.css">
-<?php
-$pageTitle = "- GESTION JOUR";
-render('../../../', 'jour/jour', compact('pageTitle', 'result'));
-?>
+$controller = new \Controllers\Jour();
+$controller->lireListe();

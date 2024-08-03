@@ -1,24 +1,7 @@
 <?php
 session_start();
 
-require_once('../../../librairies/database/database.php');
-require_once('../../../librairies/patron.php');
-require_once('../../../librairies/models/Annee.php');
+require_once('../../../librairies/controllers/Mois.php');
 
-require_once('../../../librairies/models/Mois.php');
-
-$mois = new Mois();
-
-if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
-
-    redirect('../../../../formulaires/formConnexion.php', '');
-} else {
-
-    $result = $mois->panorama();
-}
-?>
-<link rel="stylesheet" href="/style.css">
-<?php
-$pageTitle = "- GESTION MOIS";
-render('../../../', 'mois/mois', compact('pageTitle', 'result'));
-?>
+$controller = new \Controllers\Mois();
+$controller->lireListe();
