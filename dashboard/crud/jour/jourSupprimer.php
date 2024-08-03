@@ -1,35 +1,7 @@
 <?php
 session_start();
 
-require_once ('../../../librairies/database/database.php');
-require_once ('../../../librairies/patron.php');
-require_once('../../../librairies/models/Jour.php');
+require_once('../../../librairies/controllers/Jour.php');
 
-$jour = new Jour();
-
-
-if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
-
-    redirect('../../../../formulaires/formConnexion.php', '');
-}
-
-if (isset($_GET['id']) && !empty($_GET['id'])) {
-
-    $id = strip_tags($_GET['id']);
-
-    $recuperer = $jour->supprime1($id);
-
-    if (!$recuperer) {
-        $_SESSION['erreur'] = "Cet id n'existe pas";
-        header('Location: jour.php');
-        die();
-    }
-
-    $jour->supprime2($id);
-
-    $_SESSION['message'] = "Prédiction supprimée";
-    header('Location: jour.php');
-} else {
-    $_SESSION['erreur'] = "URL invalide";
-    header('Location: jour.php');
-}
+$controller = new \Controllers\Jour();
+$controller->effacer();

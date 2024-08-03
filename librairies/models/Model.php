@@ -1,5 +1,7 @@
 <?php
 
+namespace Models;
+
 require_once('../../../librairies/database/database.php');
 
 abstract class Model
@@ -20,7 +22,7 @@ abstract class Model
         $sql = "SELECT * FROM signes, {$this->table} WHERE signes.id = {$this->table}.signes_id";
         $query = $this->db->prepare($sql);
         $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        $result = $query->fetchAll($this->db::FETCH_ASSOC);
 
         return $result;
     }
@@ -39,11 +41,11 @@ abstract class Model
         $sql = "INSERT INTO {$this->table} (signes_id, champDate, textAmour, textTravail, textSante) VALUES (:signes_id, :champDate, :textAmour, :textTravail, :textSante)";
 
         $query = $this->db->prepare($sql);
-        $query->bindValue(':signes_id', $signe, PDO::PARAM_INT);
-        $query->bindValue(':champDate', $champDate, PDO::PARAM_STR);
-        $query->bindValue(':textAmour', $textAmour, PDO::PARAM_STR);
-        $query->bindValue(':textTravail', $textTravail, PDO::PARAM_STR);
-        $query->bindValue(':textSante', $textSante, PDO::PARAM_STR);
+        $query->bindValue(':signes_id', $signe, $this->db::PARAM_INT);
+        $query->bindValue(':champDate', $champDate, $this->db::PARAM_STR);
+        $query->bindValue(':textAmour', $textAmour, $this->db::PARAM_STR);
+        $query->bindValue(':textTravail', $textTravail, $this->db::PARAM_STR);
+        $query->bindValue(':textSante', $textSante, $this->db::PARAM_STR);
 
         $query->execute();
     }
@@ -60,11 +62,11 @@ abstract class Model
         $textSante = strip_tags($_POST['textSante']);
         $sql = "UPDATE {$this->table} SET champDate = :champDate, textAmour = :textAmour, textTravail = :textTravail, textSante = :textSante WHERE id = :id;";
         $query = $this->db->prepare($sql);
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
-        $query->bindValue(':champDate', $champDate, PDO::PARAM_STR);
-        $query->bindValue(':textAmour', $textAmour, PDO::PARAM_STR);
-        $query->bindValue(':textTravail', $textTravail, PDO::PARAM_STR);
-        $query->bindValue(':textSante', $textSante, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, $this->db::PARAM_INT);
+        $query->bindValue(':champDate', $champDate, $this->db::PARAM_STR);
+        $query->bindValue(':textAmour', $textAmour, $this->db::PARAM_STR);
+        $query->bindValue(':textTravail', $textTravail, $this->db::PARAM_STR);
+        $query->bindValue(':textSante', $textSante, $this->db::PARAM_STR);
         $query->execute();
     }
 
@@ -76,7 +78,7 @@ abstract class Model
         $id = strip_tags($_GET['id']);
         $sql = "SELECT * FROM {$this->table} WHERE id = :id;";
         $query = $this->db->prepare($sql);
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->bindValue(':id', $id, $this->db::PARAM_INT);
         $query->execute();
         $modifie = $query->fetch();
 
@@ -90,7 +92,7 @@ abstract class Model
     {
         $sql = "SELECT signe FROM signes,{$this->table} WHERE signes.id = {$this->table}.signes_id AND {$this->table}.id = :id";
         $query = $this->db->prepare($sql);
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->bindValue(':id', $id, $this->db::PARAM_INT);
         $query->execute();
         $sign = $query->fetch();
 
@@ -107,7 +109,7 @@ abstract class Model
     {
         $sql = "SELECT * FROM {$this->table} WHERE id = :id;";
         $query = $this->db->prepare($sql);
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->bindValue(':id', $id, $this->db::PARAM_INT);
         $query->execute();
         $recuperer = $query->fetch();
 
@@ -123,7 +125,7 @@ abstract class Model
     {
         $sql = "DELETE FROM {$this->table} WHERE id = :id;";
         $query = $this->db->prepare($sql);
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->bindValue(':id', $id, $this->db::PARAM_INT);
         $query->execute();
     }
 }

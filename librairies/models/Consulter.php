@@ -1,6 +1,8 @@
 <?php
 
-require_once('../../../librairies/models/Model.php');
+namespace Models;
+
+require_once('librairies/models/Model.php');
 
 class Consulter extends Model
 {
@@ -15,7 +17,7 @@ class Consulter extends Model
         $sql = 'SELECT `id`, `signe`, `image` FROM `signes`';
         $query = $this->db->prepare($sql);
         $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        $result = $query->fetchAll($this->db::FETCH_ASSOC);
 
         return $result;
     }
@@ -27,14 +29,14 @@ class Consulter extends Model
 */
     public function afficherUn(int $id)
     {
-        $sql = 'SELECT signes.signe, jour.textAmourJour, jour.textTravailJour, jour.textSanteJour, mois.dateMois, mois.textAmourMois, mois.textTravailMois, mois.textSanteMois, annee.textAmourAnnee, annee.textTravailAnnee, annee.textSanteAnnee
+        $sql = 'SELECT signes.signe, jour.textAmour, jour.textTravail, jour.textSante, mois.champDate, mois.textAmour, mois.textTravail, mois.textSante, annee.textAmour, annee.textTravail, annee.textSante
     FROM signes, jour, mois, annee
     WHERE signes.id = :id
     AND signes.id = jour.signes_id
     AND signes.id = mois.signes_id
     AND signes.id = annee.signes_id';
         $query = $this->db->prepare($sql);
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->bindValue(':id', $id, $this->db::PARAM_INT);
         $query->execute();
         $result = $query->fetch();
 

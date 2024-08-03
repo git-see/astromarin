@@ -4,7 +4,7 @@ session_start();
 require_once('librairies/patron.php');
 require_once('librairies/models/Consulter.php');
 
-$model = new Consulter();
+$model = new \Models\Consulter();
 
 
 if (!isset($_SESSION["user"]) || !isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Membre") || !isset($_SESSION["user"]) &&  !($_SESSION["user"]["statut"] == "Admin")) {
