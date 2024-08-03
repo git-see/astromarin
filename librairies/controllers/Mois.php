@@ -2,8 +2,6 @@
 
 namespace Controllers;
 
-require_once('../../../librairies/patron.php');
-
 class Mois extends Controller
 {
 
@@ -16,7 +14,7 @@ class Mois extends Controller
     {
         if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
-            redirect('../../../../formulaires/formConnexion.php', '');
+            \Redirections::redirect('../../../../formulaires/formConnexion.php', '');
         } else {
 
             $result = $this->model->panorama();
@@ -25,7 +23,7 @@ class Mois extends Controller
         <link rel="stylesheet" href="/style.css">
     <?php
         $pageTitle = "- GESTION MOIS";
-        render('../../../', 'mois/mois', compact('pageTitle', 'result'));
+        \Rendus::render('../../../', 'mois/mois', compact('pageTitle', 'result'));
     }
 
 /*
@@ -35,7 +33,7 @@ class Mois extends Controller
     {
         if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
-            redirect('../../../../formulaires/formConnexion.php', '');
+            \Redirections::redirect('../../../../formulaires/formConnexion.php', '');
         }
 
         if ($_POST) {
@@ -61,7 +59,7 @@ class Mois extends Controller
         <link rel="stylesheet" href="/style.css">
     <?php
         $pageTitle = "- AJOUTER MOIS";
-        render('../../../', 'mois/ajouter', compact('pageTitle'));
+        \Rendus::render('../../../', 'mois/ajouter', compact('pageTitle'));
     }
 
 /*
@@ -71,7 +69,7 @@ class Mois extends Controller
     {
         if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
-            redirect('../../../../formulaires/formConnexion.php', '');
+            \Redirections::redirect('../../../../formulaires/formConnexion.php', '');
         }
 
         if ($_POST) {
@@ -120,7 +118,7 @@ class Mois extends Controller
         <link rel="stylesheet" href="/style.css">
 <?php
         $pageTitle = "- MODIFIER UNE PRÉDICTION MENSUELLE";
-        render('../../../', 'mois/modifier', compact('pageTitle', 'sign', 'modifie'));
+        \Rendus::render('../../../', 'mois/modifier', compact('pageTitle', 'sign', 'modifie'));
     }
 
 /*
@@ -130,7 +128,7 @@ class Mois extends Controller
     {
         if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
-            redirect('../../../../formulaires/formConnexion.php', '');
+            \Redirections::redirect('../../../../formulaires/formConnexion.php', '');
         }
         // VÉRIFIER QUE L'ID EXISTE
         if (isset($_GET['id']) && !empty($_GET['id'])) {

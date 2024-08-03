@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="/style.css">
 <?php
-require_once ('../librairies/patron.php');
+require_once ('../librairies/Rendus.php');
 ?>
 <?php
 $pageTitle = "CONNEXION";
-render('../', 'formulaires/connexion', compact('pageTitle'));
+\Rendus::render('../', 'formulaires/connexion', compact('pageTitle'));
 ?>

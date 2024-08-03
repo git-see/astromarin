@@ -2,8 +2,6 @@
 
 namespace Controllers;
 
-require_once('../../../librairies/patron.php');
-
 class Annee extends Controller
 {
 
@@ -16,7 +14,7 @@ class Annee extends Controller
     {
         if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
-            redirect('../../../../formulaires/formConnexion.php', '');
+            \Redirections::redirect('../../../../formulaires/formConnexion.php', '');
         } else {
 
             $result = $this->model->panorama();
@@ -25,7 +23,7 @@ class Annee extends Controller
         <link rel="stylesheet" href="/style.css">
     <?php
         $pageTitle = "- GESTION ANNÉE";
-        render('../../../', 'annee/annee', compact('pageTitle', 'result'));
+        \Rendus::render('../../../', 'annee/annee', compact('pageTitle', 'result'));
     }
 
 /*
@@ -35,7 +33,7 @@ class Annee extends Controller
     {
         if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
-            redirect('../../../../formulaires/formConnexion.php', '');
+            \Redirections::redirect('../../../../formulaires/formConnexion.php', '');
         }
         if ($_POST) {
             if (
@@ -59,7 +57,7 @@ class Annee extends Controller
         <link rel="stylesheet" href="/style.css">
     <?php
         $pageTitle = "- RAJOUTER UNE PRÉDICTION SUPPRIMÉE";
-        render('../../../', 'annee/ajouter', compact('pageTitle'));
+        \Rendus::render('../../../', 'annee/ajouter', compact('pageTitle'));
     }
 
 /*
@@ -69,7 +67,7 @@ class Annee extends Controller
     {
         if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
-            redirect('../../../../formulaires/formConnexion.php', '');
+            \Redirections::redirect('../../../../formulaires/formConnexion.php', '');
         }
 
         if ($_POST) {
@@ -80,7 +78,7 @@ class Annee extends Controller
                 && isset($_POST['textTravail']) && !empty($_POST['textTravail'])
                 && isset($_POST['textSante']) && !empty($_POST['textSante'])
             ) {
-        // MODIFIER
+                // MODIFIER
                 $this->model->modifie1();
 
                 $_SESSION['message'] = "Prédiction modifiée";
@@ -119,7 +117,7 @@ class Annee extends Controller
         <link rel="stylesheet" href="/style.css">
 <?php
         $pageTitle = "- MODIFIER UNE PRÉDICTION ANNUELLE";
-        render('../../../', 'annee/modifier', compact('pageTitle', 'sign', 'modifie'));
+        \Rendus::render('../../../', 'annee/modifier', compact('pageTitle', 'sign', 'modifie'));
     }
 
 /*
@@ -129,7 +127,7 @@ class Annee extends Controller
     {
         if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
-            redirect('../../../../formulaires/formConnexion.php', '');
+            \Redirections::redirect('../../../../formulaires/formConnexion.php', '');
         }
         // VÉRIFIER QUE L'ID EXISTE
         if (isset($_GET['id']) && !empty($_GET['id'])) {
@@ -143,7 +141,7 @@ class Annee extends Controller
                 header('Location: annee.php');
                 die();
             }
-        // SUPPRIMER
+            // SUPPRIMER
             $this->model->supprime2($id);
 
             $_SESSION['message'] = "Prédiction supprimée";
