@@ -1,11 +1,11 @@
 # ${\color{blue} Astromarin}$ <br>
-${\color{blue}Le \ monde \ marin \ nous \ parle \ , \ découvrez \ ses \ prédictions }$ <br>
+${\color{blue}Le \ monde \ marin \ nous \ parle \, \ découvrez \ ses \ prédictions }$ <br>
 
 
 
 ## Objectif
-
-Créer un projet PHP en POO
+> [!NOTE]
+> L'objectif est de transformer un projet codé en PHP procédural, en POO
 
 ## Le projet :
 
@@ -33,5 +33,12 @@ Créer un site fonctionnel en procédural, tester, valider
 
 ## Étape 2 : optimiser le site (green)
 
-  -> factoriser : fonctions, requêtes
-  -> class : models, hériter
+      - factoriser : fonctions, requêtes
+      - classer : models, hériter, protéger, controllers
+      - autoloading
+
+
+
+
+
+

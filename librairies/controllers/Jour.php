@@ -3,8 +3,6 @@
 namespace Controllers;
 
 require_once('../../../librairies/patron.php');
-require_once('../../../librairies/controllers/Controller.php');
-require_once('../../../librairies/models/Jour.php');
 
 class Jour extends Controller
 {

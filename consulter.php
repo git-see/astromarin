@@ -2,7 +2,7 @@
 session_start();
 
 require_once('librairies/patron.php');
-require_once('librairies/models/Consulter.php');
+require_once('librairies/Models/Consulter.php');
 
 $model = new \Models\Consulter();
 
