@@ -1,8 +1,9 @@
 <?php
 session_start();
 
-require_once('librairies/patron.php');
 require_once('librairies/Models/Consulter.php');
+require_once('librairies/Redirections.php');
+require_once('librairies/Rendus.php');
 
 $model = new \Models\Consulter();
 
@@ -18,11 +19,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     require_once('librairies/database/deconnexionBDD.php');
 } else {
     echo 'Une erreur est survenue';
-    redirect('index.php', '');
+    \Redirections::redirect('index.php', '');
 }
 ?>
 
 <?php
 $pageTitle = "CONSULTER";
-render('', 'consulterContent', compact('pageTitle', 'aujourdhuiFR', 'aujourdhui', 'result'));
+\Rendus::render('', 'consulterContent', compact('pageTitle', 'aujourdhuiFR', 'aujourdhui', 'result'));
 ?>

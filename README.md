@@ -37,8 +37,11 @@ Créer un site fonctionnel en procédural, tester, valider
       - classer : models, hériter, protéger, controllers
       - autoloading
 
+## Étape 3 : préparer l'envoi en production
 
-
-
+- Faire du propre
+  - derniers tests, corrections
+  - indenter, commenter
+  - valider
 
 

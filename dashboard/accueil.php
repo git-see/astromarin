@@ -1,16 +1,15 @@
 <?php
 session_start();
 
-require_once('../librairies/database/database.php');
-require_once('../librairies/patron.php');
+require_once('../librairies/Rendus.php');
 
 if (!isset($_SESSION["user"]) && !($_SESSION["user"]["statut"] == "Admin")) {
 
-  redirect('/formulaires/formConnexion.php', '');
+  \Redirections::redirect('/formulaires/formConnexion.php', '');
 }
 ?>
 <link rel="stylesheet" href="/style.css">
 <?php
 $pageTitle = "- DASHBOARD/ACCUEIL";
-render('../', 'accueilDashboard', compact('pageTitle'));
+\Rendus::render('../', 'accueilDashboard', compact('pageTitle'));
 ?>

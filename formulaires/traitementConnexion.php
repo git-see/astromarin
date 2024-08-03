@@ -1,8 +1,7 @@
 <?php
 session_start();
 
-require_once ('../librairies/database/database.php');
-require_once ('../librairies/patron.php');
+require_once('../librairies/database/Database.php');
 
 if (isset($_POST['btnConnexion'])) {
 
@@ -12,7 +11,7 @@ if (isset($_POST['btnConnexion'])) {
             && !empty($_POST["email"] && !empty($_POST["pass"]))
         ) {
 
-            $db = getPdo();
+            $db = \Database::getPdo();
 
             $connexionCompte = $db->prepare("SELECT * FROM `users` WHERE `email`= :email");
             $connexionCompte->bindValue(':email', $_POST['email']);
@@ -56,11 +55,11 @@ if (isset($_POST['btnConnexion'])) {
             header("Location: /dashboard/accueil.php");
         } else {
 
-            redirect('formConnexion.php', 'Vous devez remplir tous les champs');
+            \Redirections::redirect('formConnexion.php', 'Vous devez remplir tous les champs');
         }
     }
 
     // Bouton non utilisé  
 } else {
-    redirect('formConnexion.php', '');
+    \Redirections::redirect('formConnexion.php', '');
 }
