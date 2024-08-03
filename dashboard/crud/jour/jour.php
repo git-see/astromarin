@@ -4,5 +4,4 @@ session_start();
 require_once('../../../librairies/autoload.php');
 require_once('../../../librairies/database/Database.php');
 
-$controller = new \Controllers\Jour();
-$controller->lireListe();
+\Astromarin::crud('\Controllers\Jour', 'lireListe');

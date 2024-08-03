@@ -4,5 +4,4 @@ session_start();
 require_once('../../../librairies/autoload.php');
 require_once('../../../librairies/database/Database.php');
 
-$controller = new \Controllers\Mois();
-$controller->rectifier();
+\Astromarin::crud('\Controllers\Mois', 'rectifier');

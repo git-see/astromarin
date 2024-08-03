@@ -4,5 +4,5 @@ session_start();
 require_once('../../../librairies/autoload.php');
 require_once('../../../librairies/database/Database.php');
 
-$controller = new \Controllers\Annee();
-$controller->creer();
+\Astromarin::crud('\Controllers\Annee', 'creer');
+
